@@ -1,5 +1,15 @@
 package server
 
-func serve(){
-	print("Mythogen server launched")
+import (
+    "fmt"
+    "github.com/gofiber/fiber/v2"
+)
+
+func Serve( port string ){
+    mythogen := fiber.New()
+    fmt.Printf("Mythogen server launched on port %s", port)
+    mythogen.Get("/test", func(c *fiber.Ctx) error {
+        return c.SendString("Hello from Mythogen server")
+    })
+    mythogen.Listen(fmt.Sprintf(":%s", port))
 }
