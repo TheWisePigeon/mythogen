@@ -17,7 +17,7 @@ var serve_cmd = &cobra.Command{
 		if len(args)>0{
             port = args[0]
             v, err := strconv.Atoi(port)
-            if v<1024 {
+            if v < 1024 {
                 fmt.Println("Invalid port. Please use a port that is not below 1024")
                 os.Exit(1)
             }
@@ -26,7 +26,7 @@ var serve_cmd = &cobra.Command{
                 os.Exit(1)
             }
 		}
-		server.Serve( port )
+		server.Serve(port)
 	},
 }
 
