@@ -1,44 +1,21 @@
-/*
-Copyright © 2023 github.com/TheWisePigeon <pigeondev01@gmail.com>
-
-*/
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
+	"mythogen/server"
 )
 
-// serveCmd represents the serve command
-var serveCmd = &cobra.Command{
-	Use:   "serve",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+var serve_cmd = &cobra.Command{
+	Use: "serve",
 	Run: func(cmd *cobra.Command, args []string) {
-        port := "5051"
-        if len(args)>0 {
-            port = args[0]
-        }
-        fmt.Println(port)
-		fmt.Println("serve called")
+		port := "5051"
+		if len(args)>0{
+			port = args[0]
+		}
+		server.serve()
 	},
 }
 
-func init() {
-	rootCmd.AddCommand(serveCmd)
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// serveCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// serveCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+func init(){
+	root_cmd.AddCommand(serve_cmd)	
 }
