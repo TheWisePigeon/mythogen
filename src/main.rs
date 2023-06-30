@@ -1,7 +1,12 @@
-use actix_web::{get, App, HttpResponse, HttpServer, Responder};
+use std::collections::HashMap;
+
+use actix_web::{get, App, HttpResponse, HttpServer, Responder, web};
 
 #[get("/")]
-async fn mythogen() -> impl Responder {
+async fn mythogen( params: web::Query<HashMap<String, String>> ) -> impl Responder {
+    for (k, v) in params.iter(){
+        println!("key {k} value {v}");
+    }
     HttpResponse::Ok()
 }
 
