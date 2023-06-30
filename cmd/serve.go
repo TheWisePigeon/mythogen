@@ -26,7 +26,7 @@ var serve_cmd = &cobra.Command{
                 os.Exit(1)
             }
 		}
-		server.Serve(&port)
+        server.Serve(fmt.Sprintf(":%s", port))
 	},
 }
 
