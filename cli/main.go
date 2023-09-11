@@ -22,7 +22,7 @@ func main() {
 		case "version":
 			println(version)
 		case "serve":
-      LaunchMythogen("8081")
+			Mythogen("8081")
 		default:
 			println("Unrecognized command. See https://github.com/TheWisePigeon/mythogen#README to learn how to use mythogen")
 		}
@@ -38,19 +38,19 @@ func main() {
 				println("The port should be higher than 1024")
 				os.Exit(1)
 			}
-      LaunchMythogen(port)
+			Mythogen(port)
 		}
 		println("Unrecognized command. See https://github.com/TheWisePigeon/mythogen#README to learn how to use mythogen")
 		os.Exit(1)
 	}
 }
 
-func LaunchMythogen(port string) {
+func Mythogen(port string) {
 	fmt.Printf("Launching mythogen server on port %s ", port)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		return
 	})
-  err := http.ListenAndServe(fmt.Sprintf(":%s", port), nil)
+	err := http.ListenAndServe(fmt.Sprintf(":%s", port), nil)
 	if err != nil {
 		println("Something went wrong when launching mythogen server. Please report bugs at https://github.com/TheWisePigeon/mythogen/issues")
 		println(err.Error())
