@@ -21,3 +21,5 @@
 go.work
 # App binary
 mythogen
+# Air tmp folder
+tmp
